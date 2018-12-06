@@ -1,0 +1,19 @@
+使用Object.prototype.toString获取一个对象的类型
+
+	var toString = Object.prototype.toString;
+	
+
+toString.call(new Date); // [object Date]
+	
+toString.call(new String); // [object String]
+toString.call(Math); // [object Math]
+
+	toString.call(/s/); // [object RegExp]
+
+	toString.call([]); // [object Array]
+
+
+	
+toString.call(undefined); // [object Undefined]
+	
+toString.call(null); // [object Null]

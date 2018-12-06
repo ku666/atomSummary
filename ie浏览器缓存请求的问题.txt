@@ -1,0 +1,21 @@
+?ie浏览器总会出现一些很奇特的问题，比如，在默认的情况下，
+一般发送ajaxget请求，IE浏览器第一次会向服务器端请求，
+获取最新数据，如果地址和参数不编号，第二次及以后再发送请求，
+它就默认获取的缓存数据，这样的问题是ie中很常见的问题，
+一般POST则 认为是一个 变动性 访问 （浏览器 认为 POST的提交 必定是 有改变的），
+总结几个解决的办法：
+
+
+1、在ajax发送请求前加上 anyAjaxObj.setRequestHeader("If-Modified-Since","0")
+
+
+2、在ajax发送请求前加上 anyAjaxObj.setRequestHeader("Cache-Control","no-cache")?
+
+
+3、在URL后面加上一个随机数： "?rand=" + Math.random()?
+
+
+4、在URL后面加上时间搓："?nowtime=" +new Date().toTimeString()?
+
+
+5、如果是使用jQuery，可以在开始的时候设置，清除缓存，$.ajaxSetup({cache:false})
