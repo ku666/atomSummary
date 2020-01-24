@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+  <script type="text/javascript">
+    function compile(code){
+       var c = String.fromCharCode(code.charCodeAt(0)+code.length);
+       for(var i = 1; i < code.length; i++){
+         c += String.fromCharCode(code.charCodeAt(i)+code.charCodeAt(i-1));
+       }
+       return escape(c);
+    }
+    console.log(compile('alert("黑客防线");'))
+
+    function uncompile(code){
+       code = unescape(code);
+       var c = String.fromCharCode(code.charCodeAt(0)-code.length);
+       for(var i=1;i<code.length;i++){
+         c+=String.fromCharCode(code.charCodeAt(i)-c.charCodeAt(i-1));
+       }
+       return c;
+    }
+    eval(uncompile(compile('alert("黑客防线");')));
+  </script>
+</html>

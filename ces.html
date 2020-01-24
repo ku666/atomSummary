@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+  <script type="text/javascript">
+    // var number = 50;
+    // var obj = {
+    //     number: 60,
+    //     getNum: function(){
+    //       var number = 70;
+    //       return this.number;
+    //     }
+    // }
+    // console.log(obj.getNum());
+    // console.log(obj.getNum.call());
+    // console.log(obj.getNum.call({number: 20}));
+
+
+    // for(var i = 0; i < 5; i++){
+    //   (function(){
+    //     setTimeout(function(){
+    //       console.log(i);
+    //     },i*1000)
+    //   })(i)
+    // }
+
+    // 使用闭包 看清楚是否赋值
+  // for(var i = 0; i < 10; i++) {
+  //     (function (i) {
+  //         setTimeout(() => {
+  //             console.log(i)
+  //         }, 0);
+  //     })(i);
+  // }
+
+    // var y = 10;
+    // if(!(x in window)){
+    //   var x = 10;
+    // }else {
+    //   ++y;
+    // }
+    // console.log(x);
+    // console.log(y);
+
+// 对象
+    // var obj = {
+    //   area1: {
+    //     name: "枣庄",
+    //     person: "200万"
+    //   },
+    //   area2: {
+    //     name: '杭州',
+    //     person: "500万"
+    //   },
+    //   area3: {
+    //     name: "北京",
+    //     person: "800万"
+    //   }
+    // }
+    //
+    // for(let i in obj){
+    //     console.log(i + ":" + obj[i].name);
+    //     console.log(i + ":" + obj[i].person);
+    // }
+
+    // es6传参
+    // let obj = {
+    //   a(name,{age,sex}){
+    //     let obj1 = {
+    //       name: name,
+    //       age: age,
+    //       sex: sex
+    //     }
+    //     return obj1;
+    //   }
+    // }
+    //
+    // console.log(obj.a("xiaoming", {age: 18,sex: "男"}));
+
+    // fetch({
+    //   url: '/dahuacrm/crm/dist/login.do',
+    //   method: 'post',
+    //   data: {
+    //     loginId: "17656",
+    //     loginPwd: "12346789"
+    //   }
+    // }).then((data)=>{
+    //   console.log(11111);
+    // }).catch((data)=>{
+    //   console.log(data);
+    //   throw "this is error";
+    // })
+
+    // fetch('/login.do?loginId=17656').then((data)=>{
+    //   console.log(11111);
+    // }).catch((data)=>{
+    //   console.log(data);
+    //   throw "this is error";
+    // })
+
+    // get 请求直接拼接不可以使用body
+    // let postData = {a:'b'};
+    // fetch('/Admin/Login/login', {
+    //   method: 'POST',
+    //   mode: 'cors',
+    //   credentials: 'include',
+    //   headers: {
+    //     'Content-Type': 'application/x-www-form-urlencoded'
+    //   },
+    //   body: JSON.stringify(postData)
+    // }).then(function(response) {
+    //   console.log(response);
+    // }).catch(()=>{
+    //   console.log(1111);
+    // });
+
+    var obj = {
+      name: "xiaoming",
+      age: 18,
+      sex: "man",
+      position: "article",
+      children: {
+        name: "xiaoxin",
+        sex: "woman"
+      }
+    }
+    console.log(Object.keys(obj));
+    function formParams(obj = {}){
+      var str = "";
+      Object.keys(obj).forEach(function(item){
+        var total = `${ item }=${ ["[object Object]","[object Array]"].includes(Object.prototype.toString.call(obj[item])) ? JSON.stringify(obj[item]) : obj[item] }`;
+        str += str.length ? `&${total}` : `?${total}`;
+      })
+      console.log(str);
+      return str;
+    }
+    formParams(obj);
+
+  </script>
+</html>

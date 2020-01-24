@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+  <script type="text/javascript">
+    function Parent(value) {
+      this.val = value
+    }
+    Parent.prototype.getValue = function() {
+      console.log(this.val)
+    }
+    function Child(value) {
+      Parent.call(this, value)
+    }
+    Child.prototype = new Parent()
+
+    var child = new Child(1)
+
+    child.getValue() // 1
+    child instanceof Parent // true
+  </script>
+</html>
